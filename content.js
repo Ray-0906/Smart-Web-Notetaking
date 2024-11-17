@@ -12,7 +12,7 @@ document.addEventListener("mouseup", () => {
   button.addEventListener("click", () => {
     chrome.runtime.sendMessage({
       text: selectedText,
-      url: window.location.href
+      url: window.location.origin // Gets only the domain (e.g., https://example.com)
     });
     button.remove();
   });
@@ -22,6 +22,3 @@ document.addEventListener("mouseup", () => {
   setTimeout(() => button.remove(), 2000); // Auto-remove button after 5 seconds
 });
 
-chrome.storage.local.get(null, (data) => {
-  console.log(data); // Logs all stored data
-});
